@@ -138,24 +138,3 @@ Access variables in your code using:
 ```js
 import.meta.env.VITE_API_URL;
 ```
-
-## Contributing
-
-1. Fork the repository.
-2. Create a feature branch:
-   ```sh
-   git checkout -b feature-name
-   ```
-3. Commit changes:
-   ```sh
-   git commit -m 'Add feature'
-   ```
-4. Push to the branch:
-   ```sh
-   git push origin feature-name
-   ```
-5. Open a Pull Request.
-
-## License
-
-This project is licensed under the MIT License.
