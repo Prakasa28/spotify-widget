@@ -127,10 +127,10 @@ To deploy the application, serve the contents of the `dist/` folder using a stat
 
 ## Environment Variables
 
-Create a `.env` file in the root directory to store environment variables:
+Create a `.env` file in the root directory with these environment variables:
 
 ```env
-VITE_API_URL=https://api.example.com
+VITE_SPOTIFY_TOKEN="YOUR_TOKEN"
 ```
 
 Access variables in your code using:
