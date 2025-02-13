@@ -127,10 +127,10 @@ To deploy the application, serve the contents of the `dist/` folder using a stat
 
 ## Environment Variables
 
-Create a `.env` file in the root directory to store environment variables:
+Create a `.env` file in the root directory with these environment variables:
 
 ```env
-VITE_API_URL=https://api.example.com
+VITE_SPOTIFY_TOKEN="YOUR_TOKEN"
 ```
 
 Access variables in your code using:
@@ -138,24 +138,3 @@ Access variables in your code using:
 ```js
 import.meta.env.VITE_API_URL;
 ```
-
-## Contributing
-
-1. Fork the repository.
-2. Create a feature branch:
-   ```sh
-   git checkout -b feature-name
-   ```
-3. Commit changes:
-   ```sh
-   git commit -m 'Add feature'
-   ```
-4. Push to the branch:
-   ```sh
-   git push origin feature-name
-   ```
-5. Open a Pull Request.
-
-## License
-
-This project is licensed under the MIT License.
