@@ -1,12 +1,14 @@
+@import "../assets/scss/variables";
+
 .card {
   display: flex;
   flex-direction: row;
-  background-color: #1e1e1e;
+  background-color: $dark-background;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
-  margin: 10px;
+  transition: transform $transition-speed ease-in-out;
+  margin: $margin-small;
   max-width: 500px;
   width: 100%;
 
@@ -15,8 +17,8 @@
   }
 
   &__image-wrapper {
-    width: 150px;
-    height: 150px;
+    width: $width-large;
+    height: $height-large;
     overflow: hidden;
     border-radius: 8px;
     position: relative;
@@ -33,10 +35,10 @@
   }
 
   &__info {
-    padding: 10px;
-    color: #fff;
+    padding: $padding-small;
+    color: $text-light;
     width: 100%;
-    height: 150px;
+    height: $height-large;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -45,14 +47,14 @@
   }
 
   &__title {
-    font-size: 18px;
+    font-size: $font-size-x-small;
     font-weight: bold;
-    margin: 10px 0 5px 0;
+    margin: $margin-small 0 $margin-small 0;
   }
 
   &__description {
-    font-size: 14px;
-    color: #b3b3b3;
+    font-size: $font-size-x-small-description;
+    color: $text-dark;
   }
 
   /* Responsive Layout */
@@ -63,11 +65,11 @@
     }
 
     .card__image-wrapper {
-      height: 150px;
+      height: $height-large;
     }
 
     .card__info {
-      height: 150px;
+      height: $height-large;
     }
 
     .card__info {
@@ -89,11 +91,11 @@
     }
 
     .card__image-wrapper {
-      height: 150px;
+      height: $height-large;
     }
 
     .card__info {
-      height: 150px;
+      height: $height-large;
     }
   }
 }
