@@ -1,5 +1,7 @@
 # Spotify Playlist Widget 🎵
 
+Check out the live version of the widget here: [https://prakasa-spotify-widget.vercel.app/](https://prakasa-spotify-widget.vercel.app/)
+
 A React-based widget that fetches and displays Spotify playlists in an expandable format. Built with clean design principles and no styling frameworks.
 
 ## Features
