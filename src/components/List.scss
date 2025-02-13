@@ -1,16 +1,17 @@
+@import "../assets/scss/variables";
+
 .playlist {
-  padding: 20px;
-  background: #1db954;
+  padding: $padding-large;
+  background: $primary-green;
   min-width: 25vw;
   height: 50vh;
-  color: black;
+  color: $text-dark;
   text-align: center;
   border-radius: 20px;
-
   font-family: sans-serif, "Helvetica Neue", Helvetica, Arial;
   overflow: hidden;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-  animation: floatingEffect 3s ease-in-out infinite;
+  box-shadow: $box-shadow-light;
+  animation: floatingEffect $floating-animation-duration ease-in-out infinite;
   overflow-y: scroll;
   display: flex;
   flex-direction: column;
@@ -45,12 +46,12 @@
   }
 
   &__title {
-    font-size: 2rem;
-    margin-bottom: 20px;
+    font-size: $font-size-large;
+    margin-bottom: $padding-large;
     max-width: 300px;
     font-weight: bold;
     text-align: center;
-    color: #fff;
+    color: $text-light;
   }
 
   &__main {
@@ -59,35 +60,35 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: $padding-large;
     position: relative;
   }
 
   &__logo {
     position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
+    top: $padding-large;
+    right: $padding-large;
+    width: $width-xsmall;
+    height: $height-xsmall;
     opacity: 1;
   }
 
   &__back {
     position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
+    top: $padding-large;
+    left: $padding-large;
+    width: $width-small;
+    height: $height-small;
     opacity: 1;
   }
 
   &__image {
-    width: 150px;
-    height: 150px;
+    width: $width-large;
+    height: $height-large;
     object-fit: cover;
     border-radius: 15px;
-    transition: transform 0.3s ease, opacity 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform $transition-speed ease, opacity $transition-speed ease;
+    box-shadow: $box-shadow-light;
   }
 
   &__info {
@@ -96,42 +97,43 @@
   }
 
   &__name {
-    font-size: 1.5rem;
+    font-size: $font-size-medium;
     font-weight: bold;
-    color: #b3b3b3;
+    color: $text-dark;
   }
 
   &__artist {
-    font-size: 1rem;
+    font-size: $font-size-small;
     opacity: 0.5;
-    color: #b3b3b3;
+    color: $text-dark;
   }
 
   &__items {
-    gap: 10px;
+    gap: $gap-small;
     overflow-x: auto;
-    padding: 10px;
+    padding: $padding-small;
     scroll-snap-type: x mandatory;
     scrollbar-width: none;
     -ms-overflow-style: none;
   }
 
   &__card {
-    background: #1e1e1e;
+    background: $dark-background;
     border-radius: 15px;
-    padding: 5px;
+    padding: $padding-small;
     cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform $transition-speed ease,
+      box-shadow $transition-speed ease;
+    box-shadow: $box-shadow-light;
 
     &:hover {
       transform: scale(1.05);
-      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3);
+      box-shadow: $box-shadow-dark;
     }
 
     &__thumbnail {
-      width: 80px;
-      height: 80px;
+      width: $width-medium;
+      height: $height-medium;
       object-fit: cover;
       border-radius: 10px;
     }
@@ -139,10 +141,9 @@
 
   &__tracks {
     display: grid;
-
-    gap: 10px;
-    padding: 20px;
-    animation: fadeIn 0.5s ease-in-out;
+    gap: $gap-small;
+    padding: $padding-large;
+    animation: fadeIn $fade-in-duration ease-in-out;
 
     @media (max-width: 600px) {
       grid-template-columns: 1fr;
@@ -160,19 +161,19 @@
 
   @media (max-width: 470px) {
     &__image {
-      width: 120px;
-      height: 120px;
+      width: $width-medium;
+      height: $height-medium;
     }
 
     &__title {
-      font-size: 1.5rem;
+      font-size: $font-size-medium;
       max-width: 150px;
     }
 
     &__items {
       flex-direction: column;
       align-items: center;
-      gap: 15px;
+      gap: $gap-medium;
     }
 
     &__card {
@@ -181,8 +182,8 @@
     }
 
     &__thumbnail {
-      width: 60px;
-      height: 60px;
+      width: $width-small;
+      height: $height-small;
     }
   }
 }
