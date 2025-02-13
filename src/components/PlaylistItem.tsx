@@ -3,6 +3,7 @@ import Card from "./Card";
 
 interface PlaylistItemProps {
   playlist: Playlist;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleClick?: any;
 }
 
