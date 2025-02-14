@@ -8,12 +8,12 @@ A React-based widget that fetches and displays Spotify playlists in an expandabl
 
 - Displays playlists with titles and cover images
 - Expands to show tracks and artists
-- Uses the Spotify API for data fetching
+- Used the Spotify API for data fetching
 - No Bootstrap or other styling frameworks
 
 ## Tech Stack
 
-- React (with optional TypeScript)
+- React with TypeScript
 - SASS/SCSS for styling
 
 ## Prerequisites
