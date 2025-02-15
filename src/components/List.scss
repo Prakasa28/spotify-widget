@@ -1,9 +1,9 @@
-@import "../assets/scss/variables";
+@use "../assets/scss/variables" as *;
 
 .playlist {
   padding: $padding-large;
   background: $primary-green;
-  min-width: 25vw;
+  margin: 20px;
   height: 50vh;
   color: $text-dark;
   text-align: center;
@@ -77,8 +77,8 @@
     position: absolute;
     top: $padding-large;
     left: $padding-large;
-    width: $width-small;
-    height: $height-small;
+    width: $width-xsmall;
+    height: $height-xsmall;
     opacity: 1;
   }
 

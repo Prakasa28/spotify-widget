@@ -3,16 +3,19 @@ import Card from "./Card";
 
 interface PlaylistItemProps {
   playlist: Playlist;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleClick?: any;
+  handleClick?: () => void;
 }
 
 function PlaylistItem({ playlist, handleClick = () => {} }: PlaylistItemProps) {
+  const { name, owner, images } = playlist;
+  const imageURL = images[0]?.url || "";
+  const ownerName = owner.display_name;
+
   return (
     <Card
-      imageURL={playlist.images[0]?.url || ""}
-      title={playlist.name}
-      description={playlist.owner.display_name}
+      imageURL={imageURL}
+      title={name}
+      description={ownerName}
       handleClick={handleClick}
     />
   );
