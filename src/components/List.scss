@@ -9,40 +9,31 @@
   text-align: center;
   border-radius: 20px;
   font-family: sans-serif, "Helvetica Neue", Helvetica, Arial;
-  overflow: hidden;
-  box-shadow: $box-shadow-light;
-  animation: floatingEffect $floating-animation-duration ease-in-out infinite;
-  overflow-y: scroll;
+  overflow-y: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-shadow: $box-shadow-light;
+  animation: floatingEffect $floating-animation-duration ease-in-out infinite;
 
   &::-webkit-scrollbar {
     display: none;
   }
-
   scrollbar-width: none;
   -ms-overflow-style: none;
 
   @keyframes floatingEffect {
-    0% {
+    0%,
+    100% {
       transform: translateY(0);
     }
     50% {
       transform: translateY(-10px);
     }
-    100% {
-      transform: translateY(0);
-    }
   }
 
   &:hover {
     transform: translateY(-5px);
-  }
-
-  &__container {
-    display: flex;
-    flex-direction: column;
   }
 
   &__title {
@@ -54,14 +45,9 @@
     color: $text-light;
   }
 
-  &__main {
+  &__container {
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-bottom: $padding-large;
-    position: relative;
   }
 
   &__logo {
@@ -70,7 +56,6 @@
     right: $padding-large;
     width: $width-xsmall;
     height: $height-xsmall;
-    opacity: 1;
   }
 
   &__back {
@@ -79,64 +64,6 @@
     left: $padding-large;
     width: $width-xsmall;
     height: $height-xsmall;
-    opacity: 1;
-  }
-
-  &__image {
-    width: $width-large;
-    height: $height-large;
-    object-fit: cover;
-    border-radius: 15px;
-    transition: transform $transition-speed ease, opacity $transition-speed ease;
-    box-shadow: $box-shadow-light;
-  }
-
-  &__info {
-    margin-top: 10px;
-    opacity: 0.8;
-  }
-
-  &__name {
-    font-size: $font-size-medium;
-    font-weight: bold;
-    color: $text-dark;
-  }
-
-  &__artist {
-    font-size: $font-size-small;
-    opacity: 0.5;
-    color: $text-dark;
-  }
-
-  &__items {
-    gap: $gap-small;
-    overflow-x: auto;
-    padding: $padding-small;
-    scroll-snap-type: x mandatory;
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-
-  &__card {
-    background: $dark-background;
-    border-radius: 15px;
-    padding: $padding-small;
-    cursor: pointer;
-    transition: transform $transition-speed ease,
-      box-shadow $transition-speed ease;
-    box-shadow: $box-shadow-light;
-
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: $box-shadow-dark;
-    }
-
-    &__thumbnail {
-      width: $width-medium;
-      height: $height-medium;
-      object-fit: cover;
-      border-radius: 10px;
-    }
   }
 
   &__tracks {
@@ -144,10 +71,6 @@
     gap: $gap-small;
     padding: $padding-large;
     animation: fadeIn $fade-in-duration ease-in-out;
-
-    @media (max-width: 600px) {
-      grid-template-columns: 1fr;
-    }
   }
 
   @keyframes fadeIn {
@@ -160,30 +83,13 @@
   }
 
   @media (max-width: 470px) {
-    &__image {
-      width: $width-medium;
-      height: $height-medium;
-    }
-
     &__title {
       font-size: $font-size-medium;
       max-width: 150px;
     }
 
-    &__items {
-      flex-direction: column;
+    &__container {
       align-items: center;
-      gap: $gap-medium;
-    }
-
-    &__card {
-      width: 90%;
-      margin: 0 auto;
-    }
-
-    &__thumbnail {
-      width: $width-small;
-      height: $height-small;
     }
   }
 }
