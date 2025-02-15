@@ -17,7 +17,7 @@
 
   &__image-wrapper {
     width: $width-large;
-    height: $height-large;
+    height: $height-medium;
     overflow: hidden;
     border-radius: 8px;
     position: relative;
@@ -64,11 +64,11 @@
     }
 
     .card__image-wrapper {
-      height: $height-large;
+      height: $height-medium;
     }
 
     .card__info {
-      height: $height-large;
+      height: $height-medium;
     }
 
     .card__info {
@@ -76,11 +76,11 @@
     }
 
     .card__title {
-      font-size: 20px;
+      font-size: 18px;
     }
 
     .card__description {
-      font-size: 16px;
+      font-size: 15px;
     }
   }
 
@@ -90,11 +90,11 @@
     }
 
     .card__image-wrapper {
-      height: $height-large;
+      height: $height-medium;
     }
 
     .card__info {
-      height: $height-large;
+      height: $height-medium;
     }
   }
 }
