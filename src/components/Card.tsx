@@ -1,17 +1,13 @@
 import "./Card.scss";
 
-function Card({
-  imageURL,
-  title,
-  description,
-  handleClick,
-}: {
+interface CardProps {
   imageURL: string;
   title: string;
   description: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  handleClick?: any;
-}) {
+  handleClick?: () => void;
+}
+
+function Card({ imageURL, title, description, handleClick }: CardProps) {
   return (
     <div className="card" onClick={handleClick}>
       <div className="card__image-wrapper">

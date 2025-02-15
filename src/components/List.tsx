@@ -13,55 +13,64 @@ const PLAYLIST_IDS = [
 ];
 
 function List() {
-  const [listItems, setListItems] = useState<Playlist[]>([]);
-  const [currentPlaylist, setCurrentPlaylist] = useState<null | number>(null);
+  const [playlists, setPlaylists] = useState<Playlist[]>([]);
+  const [currentPlaylistIndex, setCurrentPlaylistIndex] = useState<
+    null | number
+  >(null);
 
   useEffect(() => {
-    const fetchPlaylists = async () => {
+    const loadPlaylists = async () => {
       try {
-        const playlists = await Promise.all(
+        const fetchedPlaylists = await Promise.all(
           PLAYLIST_IDS.map((id) => fetchSpotifyPlaylist(id))
         );
-        setListItems(playlists);
+        setPlaylists(fetchedPlaylists);
       } catch (error) {
         console.error("Error fetching playlists:", error);
       }
     };
 
-    fetchPlaylists();
+    loadPlaylists();
   }, []);
+
+  const handleBackClick = () => {
+    setCurrentPlaylistIndex(null);
+  };
+
+  // Render Playlist items or Track items based on current state
+  const renderContent = () => {
+    if (currentPlaylistIndex === null) {
+      return playlists.map((playlist, index) => (
+        <div key={playlist.id} onClick={() => setCurrentPlaylistIndex(index)}>
+          <PlaylistItem playlist={playlist} />
+        </div>
+      ));
+    } else {
+      const currentPlaylist = playlists[currentPlaylistIndex];
+      return currentPlaylist.tracks.items.map((track) => (
+        <TrackItem key={track.track.id} track={track.track} />
+      ));
+    }
+  };
 
   return (
     <div className="playlist">
       <h1 className="playlist__title">
-        {currentPlaylist !== null
-          ? listItems[currentPlaylist].name
+        {currentPlaylistIndex !== null
+          ? playlists[currentPlaylistIndex].name
           : "My Playlists"}
       </h1>
       <div className="playlist__container">
         <img src="/spotify.png" alt="Spotify" className="playlist__logo" />
 
-        {currentPlaylist !== null && (
+        {/* Show back button only when a specific playlist is selected */}
+        {currentPlaylistIndex !== null && (
           <div className="playlist__back">
-            <BackButton size={40} onClick={() => setCurrentPlaylist(null)} />
+            <BackButton size={40} onClick={handleBackClick} />
           </div>
         )}
 
-        {currentPlaylist === null ? (
-          <div className="playlist__tracks">
-            {listItems.map((playlist, index) => (
-              <div key={playlist.id} onClick={() => setCurrentPlaylist(index)}>
-                <PlaylistItem playlist={playlist} />
-              </div>
-            ))}
-          </div>
-        ) : (
-          <div className="playlist__tracks">
-            {listItems[currentPlaylist].tracks.items.map((track) => (
-              <TrackItem key={track.track.id} track={track.track} />
-            ))}
-          </div>
-        )}
+        <div className="playlist__tracks">{renderContent()}</div>
       </div>
     </div>
   );
