@@ -53,6 +53,10 @@ function List() {
     }
   };
 
+  if (playlists.length === 0) {
+    return <div>Loading...</div>;
+  }
+
   return (
     <div className="playlist">
       <h1 className="playlist__title">
