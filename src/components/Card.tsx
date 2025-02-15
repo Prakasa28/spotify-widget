@@ -15,7 +15,7 @@ function Card({ imageURL, title, description, handleClick }: CardProps) {
       </div>
       <div className="card__info">
         <h2 className="card__title">
-          {title.length > 50 ? title.slice(0, 50) + "..." : title}
+          {title.length > 40 ? title.slice(0, 40) + "..." : title}
         </h2>
         <p className="card__description">{description}</p>
       </div>

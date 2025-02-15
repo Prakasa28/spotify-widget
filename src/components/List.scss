@@ -1,6 +1,8 @@
 @use "../assets/scss/variables" as *;
 
 .playlist {
+  width: 400px;
+  max-width: 90vw;
   padding: $padding-large;
   background: $primary-green;
   margin: 20px;
@@ -50,20 +52,20 @@
     flex-direction: column;
   }
 
-  &__logo {
+  &__logo,
+  &__back {
     position: absolute;
     top: $padding-large;
-    right: $padding-large;
     width: $width-xsmall;
     height: $height-xsmall;
   }
 
+  &__logo {
+    right: $padding-large;
+  }
+
   &__back {
-    position: absolute;
-    top: $padding-large;
     left: $padding-large;
-    width: $width-xsmall;
-    height: $height-xsmall;
   }
 
   &__tracks {
@@ -83,6 +85,7 @@
   }
 
   @media (max-width: 470px) {
+    width: 80vw;
     &__title {
       font-size: $font-size-medium;
       max-width: 150px;
