@@ -5,6 +5,7 @@ import PlaylistItem from "./PlaylistItem";
 import TrackItem from "./TrackItem";
 import "./List.scss";
 import BackButton from "./BackButton";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const PLAYLIST_IDS = [
   "2wGYnJyPo3Ke2utC3N6MYg",
@@ -17,9 +18,11 @@ function List() {
   const [currentPlaylistIndex, setCurrentPlaylistIndex] = useState<
     null | number
   >(null);
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const loadPlaylists = async () => {
@@ -46,6 +49,24 @@ function List() {
     loadPlaylists();
   }, []);
 
+  // Effect to reset the index when navigating back to the list view
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setCurrentPlaylistIndex(null);
+    }
+  }, [location]);
+
+  const handlePlaylistClick = (index: number) => {
+    setCurrentPlaylistIndex(index);
+    navigate(`/playlist/${index}`);
+  };
+
+  useEffect(() => {
+    if (location.pathname === "/") {
+      setCurrentPlaylistIndex(null);
+    }
+  }, [location]);
+
   if (loading) {
     return <div>Loading playlists...</div>;
   }
@@ -56,13 +77,13 @@ function List() {
 
   const handleBackClick = () => {
     setCurrentPlaylistIndex(null);
+    navigate("/");
   };
 
-  // Render Playlist items or Track items based on current state
   const renderContent = () => {
     if (currentPlaylistIndex === null) {
       return playlists.map((playlist, index) => (
-        <div key={playlist.id} onClick={() => setCurrentPlaylistIndex(index)}>
+        <div key={playlist.id} onClick={() => handlePlaylistClick(index)}>
           <PlaylistItem playlist={playlist} />
         </div>
       ));
@@ -73,10 +94,6 @@ function List() {
       ));
     }
   };
-
-  if (playlists.length === 0) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="playlist">
