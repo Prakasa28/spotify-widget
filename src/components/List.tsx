@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchSpotifyPlaylist } from "../spotify";
+import { fetchSpotifyPlaylist, fetchAccessToken } from "../spotify";
 import { Playlist } from "../types";
 import PlaylistItem from "./PlaylistItem";
 import TrackItem from "./TrackItem";
@@ -18,20 +18,41 @@ function List() {
     null | number
   >(null);
 
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
   useEffect(() => {
     const loadPlaylists = async () => {
+      setLoading(true);
+      setError(null);
+
       try {
+        // Fetch the token only once
+        const token = await fetchAccessToken();
+
+        // Fetch all playlists at the same time using the token
         const fetchedPlaylists = await Promise.all(
-          PLAYLIST_IDS.map((id) => fetchSpotifyPlaylist(id))
+          PLAYLIST_IDS.map((id) => fetchSpotifyPlaylist(id, token))
         );
         setPlaylists(fetchedPlaylists);
-      } catch (error) {
-        console.error("Error fetching playlists:", error);
+      } catch (err) {
+        setError("Error fetching playlists.");
+        console.error("Error fetching playlists:", err);
+      } finally {
+        setLoading(false);
       }
     };
 
     loadPlaylists();
   }, []);
+
+  if (loading) {
+    return <div>Loading playlists...</div>;
+  }
+
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   const handleBackClick = () => {
     setCurrentPlaylistIndex(null);
